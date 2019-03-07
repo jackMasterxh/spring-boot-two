@@ -1,4 +1,4 @@
-package com.datasource.mapper;
+package com.datasource.mapper.custom;
 
 
 import com.datasource.entity.User;

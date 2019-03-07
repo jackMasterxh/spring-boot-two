@@ -1,6 +1,8 @@
 package com.datasource.service;
 
 
+import com.datasource.entity.UserCard;
+import com.datasource.entity.UserT;
 import com.datasource.entity.UserTo;
 
 import java.util.List;
@@ -14,4 +16,7 @@ public interface UserService {
       */
     public List<UserTo> findUserList(String userId);
 
+    List<UserT> findUserListTo(String userId);
+
+    List<UserCard> findUserListThree(String userId);
 }

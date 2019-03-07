@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.datasource.mapper.three.UserCardMapper" >
+  <resultMap id="BaseResultMap" type="com.datasource.entity.UserCard" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="card_id" property="cardId" jdbcType="VARCHAR" />
+    <result column="use_type" property="useType" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="thumbnail_url" property="thumbnailUrl" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="used_quantity" property="usedQuantity" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="jump_url" property="jumpUrl" jdbcType="VARCHAR" />
+    <result column="valid_time" property="validTime" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="uniacid" property="uniacid" jdbcType="INTEGER" />
+    <result column="discount" property="discount" jdbcType="VARCHAR" />
+    <result column="goods_id" property="goodsId" jdbcType="VARCHAR" />
+    <result column="card_type" property="cardType" jdbcType="INTEGER" />
+    <result column="goods_type" property="goodsType" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, card_id, use_type, name, title, img_url, thumbnail_url, type, quantity, used_quantity, 
+    description, jump_url, valid_time, status, uniacid, discount, goods_id, card_type, 
+    goods_type, is_del, create_time
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ims_choujiang_card
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ims_choujiang_card
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.datasource.entity.UserCard" >
+    insert into ims_choujiang_card (id, card_id, use_type, 
+      name, title, img_url, 
+      thumbnail_url, type, quantity, 
+      used_quantity, description, jump_url, 
+      valid_time, status, uniacid, 
+      discount, goods_id, card_type, 
+      goods_type, is_del, create_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{cardId,jdbcType=VARCHAR}, #{useType,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR}, 
+      #{thumbnailUrl,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{quantity,jdbcType=INTEGER}, 
+      #{usedQuantity,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{jumpUrl,jdbcType=VARCHAR}, 
+      #{validTime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{uniacid,jdbcType=INTEGER}, 
+      #{discount,jdbcType=VARCHAR}, #{goodsId,jdbcType=VARCHAR}, #{cardType,jdbcType=INTEGER}, 
+      #{goodsType,jdbcType=VARCHAR}, #{isDel,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.datasource.entity.UserCard" >
+    insert into ims_choujiang_card
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cardId != null" >
+        card_id,
+      </if>
+      <if test="useType != null" >
+        use_type,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="imgUrl != null" >
+        img_url,
+      </if>
+      <if test="thumbnailUrl != null" >
+        thumbnail_url,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="usedQuantity != null" >
+        used_quantity,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="jumpUrl != null" >
+        jump_url,
+      </if>
+      <if test="validTime != null" >
+        valid_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="uniacid != null" >
+        uniacid,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="cardType != null" >
+        card_type,
+      </if>
+      <if test="goodsType != null" >
+        goods_type,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cardId != null" >
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="useType != null" >
+        #{useType,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailUrl != null" >
+        #{thumbnailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="usedQuantity != null" >
+        #{usedQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="jumpUrl != null" >
+        #{jumpUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="validTime != null" >
+        #{validTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="uniacid != null" >
+        #{uniacid,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        #{cardType,jdbcType=INTEGER},
+      </if>
+      <if test="goodsType != null" >
+        #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.datasource.entity.UserCard" >
+    update ims_choujiang_card
+    <set >
+      <if test="cardId != null" >
+        card_id = #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="useType != null" >
+        use_type = #{useType,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailUrl != null" >
+        thumbnail_url = #{thumbnailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="usedQuantity != null" >
+        used_quantity = #{usedQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="jumpUrl != null" >
+        jump_url = #{jumpUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="validTime != null" >
+        valid_time = #{validTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="uniacid != null" >
+        uniacid = #{uniacid,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        card_type = #{cardType,jdbcType=INTEGER},
+      </if>
+      <if test="goodsType != null" >
+        goods_type = #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.datasource.entity.UserCard" >
+    update ims_choujiang_card
+    set card_id = #{cardId,jdbcType=VARCHAR},
+      use_type = #{useType,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      thumbnail_url = #{thumbnailUrl,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      used_quantity = #{usedQuantity,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      jump_url = #{jumpUrl,jdbcType=VARCHAR},
+      valid_time = #{validTime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      uniacid = #{uniacid,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=VARCHAR},
+      goods_id = #{goodsId,jdbcType=VARCHAR},
+      card_type = #{cardType,jdbcType=INTEGER},
+      goods_type = #{goodsType,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

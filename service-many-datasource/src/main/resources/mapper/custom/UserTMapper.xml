@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.datasource.mapper.custom.UserTMapper" >
+  <resultMap id="BaseResultMap" type="com.datasource.entity.UserT" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uniacid" property="uniacid" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="wx_unionid" property="wxUnionid" jdbcType="VARCHAR" />
+    <result column="np_openid" property="npOpenid" jdbcType="VARCHAR" />
+    <result column="page_access_token" property="pageAccessToken" jdbcType="VARCHAR" />
+    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="yu_num" property="yuNum" jdbcType="INTEGER" />
+    <result column="mf_num" property="mfNum" jdbcType="INTEGER" />
+    <result column="smoke_num" property="smokeNum" jdbcType="INTEGER" />
+    <result column="smoke_share_num" property="smokeShareNum" jdbcType="INTEGER" />
+    <result column="winning_num" property="winningNum" jdbcType="INTEGER" />
+    <result column="send_time" property="sendTime" jdbcType="VARCHAR" />
+    <result column="remaining_sum" property="remainingSum" jdbcType="VARCHAR" />
+    <result column="earnings" property="earnings" jdbcType="VARCHAR" />
+    <result column="share_num" property="shareNum" jdbcType="INTEGER" />
+    <result column="share_num_time" property="shareNumTime" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="shengri" property="shengri" jdbcType="VARCHAR" />
+    <result column="wxname" property="wxname" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.datasource.entity.UserT" extends="BaseResultMap" >
+    <result column="form_id" property="formId" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uniacid, userid, openid, wx_unionid, np_openid, page_access_token, avatar, nickname, 
+    create_time, yu_num, mf_num, smoke_num, smoke_share_num, winning_num, send_time, 
+    remaining_sum, earnings, share_num, share_num_time, name, tel, shengri, wxname, status
+  </sql>
+  <sql id="Blob_Column_List" >
+    form_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ims_choujiang_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ims_choujiang_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.datasource.entity.UserT" >
+    insert into ims_choujiang_user (id, uniacid, userid, 
+      openid, wx_unionid, np_openid, 
+      page_access_token, avatar, nickname, 
+      create_time, yu_num, mf_num, 
+      smoke_num, smoke_share_num, winning_num, 
+      send_time, remaining_sum, earnings, 
+      share_num, share_num_time, name, 
+      tel, shengri, wxname, 
+      status, form_id)
+    values (#{id,jdbcType=INTEGER}, #{uniacid,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, 
+      #{openid,jdbcType=VARCHAR}, #{wxUnionid,jdbcType=VARCHAR}, #{npOpenid,jdbcType=VARCHAR}, 
+      #{pageAccessToken,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{yuNum,jdbcType=INTEGER}, #{mfNum,jdbcType=INTEGER}, 
+      #{smokeNum,jdbcType=INTEGER}, #{smokeShareNum,jdbcType=INTEGER}, #{winningNum,jdbcType=INTEGER}, 
+      #{sendTime,jdbcType=VARCHAR}, #{remainingSum,jdbcType=VARCHAR}, #{earnings,jdbcType=VARCHAR}, 
+      #{shareNum,jdbcType=INTEGER}, #{shareNumTime,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{shengri,jdbcType=VARCHAR}, #{wxname,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{formId,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.datasource.entity.UserT" >
+    insert into ims_choujiang_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uniacid != null" >
+        uniacid,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="wxUnionid != null" >
+        wx_unionid,
+      </if>
+      <if test="npOpenid != null" >
+        np_openid,
+      </if>
+      <if test="pageAccessToken != null" >
+        page_access_token,
+      </if>
+      <if test="avatar != null" >
+        avatar,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="yuNum != null" >
+        yu_num,
+      </if>
+      <if test="mfNum != null" >
+        mf_num,
+      </if>
+      <if test="smokeNum != null" >
+        smoke_num,
+      </if>
+      <if test="smokeShareNum != null" >
+        smoke_share_num,
+      </if>
+      <if test="winningNum != null" >
+        winning_num,
+      </if>
+      <if test="sendTime != null" >
+        send_time,
+      </if>
+      <if test="remainingSum != null" >
+        remaining_sum,
+      </if>
+      <if test="earnings != null" >
+        earnings,
+      </if>
+      <if test="shareNum != null" >
+        share_num,
+      </if>
+      <if test="shareNumTime != null" >
+        share_num_time,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="shengri != null" >
+        shengri,
+      </if>
+      <if test="wxname != null" >
+        wxname,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="formId != null" >
+        form_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uniacid != null" >
+        #{uniacid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUnionid != null" >
+        #{wxUnionid,jdbcType=VARCHAR},
+      </if>
+      <if test="npOpenid != null" >
+        #{npOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="pageAccessToken != null" >
+        #{pageAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="yuNum != null" >
+        #{yuNum,jdbcType=INTEGER},
+      </if>
+      <if test="mfNum != null" >
+        #{mfNum,jdbcType=INTEGER},
+      </if>
+      <if test="smokeNum != null" >
+        #{smokeNum,jdbcType=INTEGER},
+      </if>
+      <if test="smokeShareNum != null" >
+        #{smokeShareNum,jdbcType=INTEGER},
+      </if>
+      <if test="winningNum != null" >
+        #{winningNum,jdbcType=INTEGER},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingSum != null" >
+        #{remainingSum,jdbcType=VARCHAR},
+      </if>
+      <if test="earnings != null" >
+        #{earnings,jdbcType=VARCHAR},
+      </if>
+      <if test="shareNum != null" >
+        #{shareNum,jdbcType=INTEGER},
+      </if>
+      <if test="shareNumTime != null" >
+        #{shareNumTime,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="shengri != null" >
+        #{shengri,jdbcType=VARCHAR},
+      </if>
+      <if test="wxname != null" >
+        #{wxname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="formId != null" >
+        #{formId,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.datasource.entity.UserT" >
+    update ims_choujiang_user
+    <set >
+      <if test="uniacid != null" >
+        uniacid = #{uniacid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUnionid != null" >
+        wx_unionid = #{wxUnionid,jdbcType=VARCHAR},
+      </if>
+      <if test="npOpenid != null" >
+        np_openid = #{npOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="pageAccessToken != null" >
+        page_access_token = #{pageAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="yuNum != null" >
+        yu_num = #{yuNum,jdbcType=INTEGER},
+      </if>
+      <if test="mfNum != null" >
+        mf_num = #{mfNum,jdbcType=INTEGER},
+      </if>
+      <if test="smokeNum != null" >
+        smoke_num = #{smokeNum,jdbcType=INTEGER},
+      </if>
+      <if test="smokeShareNum != null" >
+        smoke_share_num = #{smokeShareNum,jdbcType=INTEGER},
+      </if>
+      <if test="winningNum != null" >
+        winning_num = #{winningNum,jdbcType=INTEGER},
+      </if>
+      <if test="sendTime != null" >
+        send_time = #{sendTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingSum != null" >
+        remaining_sum = #{remainingSum,jdbcType=VARCHAR},
+      </if>
+      <if test="earnings != null" >
+        earnings = #{earnings,jdbcType=VARCHAR},
+      </if>
+      <if test="shareNum != null" >
+        share_num = #{shareNum,jdbcType=INTEGER},
+      </if>
+      <if test="shareNumTime != null" >
+        share_num_time = #{shareNumTime,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="shengri != null" >
+        shengri = #{shengri,jdbcType=VARCHAR},
+      </if>
+      <if test="wxname != null" >
+        wxname = #{wxname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="formId != null" >
+        form_id = #{formId,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.datasource.entity.UserT" >
+    update ims_choujiang_user
+    set uniacid = #{uniacid,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      wx_unionid = #{wxUnionid,jdbcType=VARCHAR},
+      np_openid = #{npOpenid,jdbcType=VARCHAR},
+      page_access_token = #{pageAccessToken,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      yu_num = #{yuNum,jdbcType=INTEGER},
+      mf_num = #{mfNum,jdbcType=INTEGER},
+      smoke_num = #{smokeNum,jdbcType=INTEGER},
+      smoke_share_num = #{smokeShareNum,jdbcType=INTEGER},
+      winning_num = #{winningNum,jdbcType=INTEGER},
+      send_time = #{sendTime,jdbcType=VARCHAR},
+      remaining_sum = #{remainingSum,jdbcType=VARCHAR},
+      earnings = #{earnings,jdbcType=VARCHAR},
+      share_num = #{shareNum,jdbcType=INTEGER},
+      share_num_time = #{shareNumTime,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      shengri = #{shengri,jdbcType=VARCHAR},
+      wxname = #{wxname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      form_id = #{formId,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.datasource.entity.UserT" >
+    update ims_choujiang_user
+    set uniacid = #{uniacid,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      wx_unionid = #{wxUnionid,jdbcType=VARCHAR},
+      np_openid = #{npOpenid,jdbcType=VARCHAR},
+      page_access_token = #{pageAccessToken,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      yu_num = #{yuNum,jdbcType=INTEGER},
+      mf_num = #{mfNum,jdbcType=INTEGER},
+      smoke_num = #{smokeNum,jdbcType=INTEGER},
+      smoke_share_num = #{smokeShareNum,jdbcType=INTEGER},
+      winning_num = #{winningNum,jdbcType=INTEGER},
+      send_time = #{sendTime,jdbcType=VARCHAR},
+      remaining_sum = #{remainingSum,jdbcType=VARCHAR},
+      earnings = #{earnings,jdbcType=VARCHAR},
+      share_num = #{shareNum,jdbcType=INTEGER},
+      share_num_time = #{shareNumTime,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      shengri = #{shengri,jdbcType=VARCHAR},
+      wxname = #{wxname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

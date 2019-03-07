@@ -1,4 +1,4 @@
-package com.datasource.mapper;
+package com.datasource.mapper.master;
 
 import com.datasource.entity.UserTo;
 import org.apache.ibatis.annotations.Mapper;
