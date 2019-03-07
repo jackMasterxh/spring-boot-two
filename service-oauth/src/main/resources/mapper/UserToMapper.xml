@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oauth.mapper.UserToMapper" >
+  <resultMap id="BaseResultMap" type="com.oauth.entity.UserTo" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="test_code" property="testCode" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="job_title" property="jobTitle" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="intro" property="intro" jdbcType="VARCHAR" />
+    <result column="signature" property="signature" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="label" property="label" jdbcType="VARCHAR" />
+    <result column="mobile_ver" property="mobileVer" jdbcType="VARCHAR" />
+    <result column="phone_model" property="phoneModel" jdbcType="VARCHAR" />
+    <result column="operating_system" property="operatingSystem" jdbcType="VARCHAR" />
+    <result column="system_ver" property="systemVer" jdbcType="VARCHAR" />
+    <result column="wx_open_id" property="wxOpenId" jdbcType="VARCHAR" />
+    <result column="wx_nick_name" property="wxNickName" jdbcType="VARCHAR" />
+    <result column="wx_avatar_url" property="wxAvatarUrl" jdbcType="VARCHAR" />
+    <result column="wx_gender" property="wxGender" jdbcType="VARCHAR" />
+    <result column="wx_province" property="wxProvince" jdbcType="VARCHAR" />
+    <result column="wx_city" property="wxCity" jdbcType="VARCHAR" />
+    <result column="wx_country" property="wxCountry" jdbcType="VARCHAR" />
+    <result column="wx_union_id" property="wxUnionId" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="is_member" property="isMember" jdbcType="INTEGER" />
+    <result column="avatar_path" property="avatarPath" jdbcType="VARCHAR" />
+    <result column="background_path" property="backgroundPath" jdbcType="VARCHAR" />
+    <result column="birth_data" property="birthData" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="expand" property="expand" jdbcType="VARCHAR" />
+    <result column="is_disable" property="isDisable" jdbcType="INTEGER" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, phone, test_code, email, nick_name, job_title, level, name, intro, signature, 
+    password, gender, user_type, label, mobile_ver, phone_model, operating_system, system_ver, 
+    wx_open_id, wx_nick_name, wx_avatar_url, wx_gender, wx_province, wx_city, wx_country, 
+    wx_union_id, sort, user_status, token, is_member, avatar_path, background_path, birth_data, 
+    remarks, last_login_time, area, expand, is_disable, is_del, update_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from a_user
+    where id = #{userId}
+  </select>
+
+  <select id="findUserList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from a_user
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from a_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.oauth.entity.UserTo" >
+    insert into a_user (id, phone, test_code, 
+      email, nick_name, job_title, 
+      level, name, intro, 
+      signature, password, gender, 
+      user_type, label, mobile_ver, 
+      phone_model, operating_system, system_ver, 
+      wx_open_id, wx_nick_name, wx_avatar_url, 
+      wx_gender, wx_province, wx_city, 
+      wx_country, wx_union_id, sort, 
+      user_status, token, is_member, 
+      avatar_path, background_path, birth_data, 
+      remarks, last_login_time, area, 
+      expand, is_disable, is_del, 
+      update_time, create_time)
+    values (#{id,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{testCode,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{jobTitle,jdbcType=VARCHAR}, 
+      #{level,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
+      #{signature,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+      #{userType,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, #{mobileVer,jdbcType=VARCHAR}, 
+      #{phoneModel,jdbcType=VARCHAR}, #{operatingSystem,jdbcType=VARCHAR}, #{systemVer,jdbcType=VARCHAR}, 
+      #{wxOpenId,jdbcType=VARCHAR}, #{wxNickName,jdbcType=VARCHAR}, #{wxAvatarUrl,jdbcType=VARCHAR}, 
+      #{wxGender,jdbcType=VARCHAR}, #{wxProvince,jdbcType=VARCHAR}, #{wxCity,jdbcType=VARCHAR}, 
+      #{wxCountry,jdbcType=VARCHAR}, #{wxUnionId,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{userStatus,jdbcType=INTEGER}, #{token,jdbcType=VARCHAR}, #{isMember,jdbcType=INTEGER}, 
+      #{avatarPath,jdbcType=VARCHAR}, #{backgroundPath,jdbcType=VARCHAR}, #{birthData,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{expand,jdbcType=VARCHAR}, #{isDisable,jdbcType=INTEGER}, #{isDel,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oauth.entity.UserTo" >
+    insert into a_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="testCode != null" >
+        test_code,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="jobTitle != null" >
+        job_title,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="intro != null" >
+        intro,
+      </if>
+      <if test="signature != null" >
+        signature,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="label != null" >
+        label,
+      </if>
+      <if test="mobileVer != null" >
+        mobile_ver,
+      </if>
+      <if test="phoneModel != null" >
+        phone_model,
+      </if>
+      <if test="operatingSystem != null" >
+        operating_system,
+      </if>
+      <if test="systemVer != null" >
+        system_ver,
+      </if>
+      <if test="wxOpenId != null" >
+        wx_open_id,
+      </if>
+      <if test="wxNickName != null" >
+        wx_nick_name,
+      </if>
+      <if test="wxAvatarUrl != null" >
+        wx_avatar_url,
+      </if>
+      <if test="wxGender != null" >
+        wx_gender,
+      </if>
+      <if test="wxProvince != null" >
+        wx_province,
+      </if>
+      <if test="wxCity != null" >
+        wx_city,
+      </if>
+      <if test="wxCountry != null" >
+        wx_country,
+      </if>
+      <if test="wxUnionId != null" >
+        wx_union_id,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="userStatus != null" >
+        user_status,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="isMember != null" >
+        is_member,
+      </if>
+      <if test="avatarPath != null" >
+        avatar_path,
+      </if>
+      <if test="backgroundPath != null" >
+        background_path,
+      </if>
+      <if test="birthData != null" >
+        birth_data,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="expand != null" >
+        expand,
+      </if>
+      <if test="isDisable != null" >
+        is_disable,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="testCode != null" >
+        #{testCode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null" >
+        #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null" >
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileVer != null" >
+        #{mobileVer,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneModel != null" >
+        #{phoneModel,jdbcType=VARCHAR},
+      </if>
+      <if test="operatingSystem != null" >
+        #{operatingSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="systemVer != null" >
+        #{systemVer,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenId != null" >
+        #{wxOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxNickName != null" >
+        #{wxNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="wxAvatarUrl != null" >
+        #{wxAvatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="wxGender != null" >
+        #{wxGender,jdbcType=VARCHAR},
+      </if>
+      <if test="wxProvince != null" >
+        #{wxProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="wxCity != null" >
+        #{wxCity,jdbcType=VARCHAR},
+      </if>
+      <if test="wxCountry != null" >
+        #{wxCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUnionId != null" >
+        #{wxUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="isMember != null" >
+        #{isMember,jdbcType=INTEGER},
+      </if>
+      <if test="avatarPath != null" >
+        #{avatarPath,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundPath != null" >
+        #{backgroundPath,jdbcType=VARCHAR},
+      </if>
+      <if test="birthData != null" >
+        #{birthData,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="expand != null" >
+        #{expand,jdbcType=VARCHAR},
+      </if>
+      <if test="isDisable != null" >
+        #{isDisable,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oauth.entity.UserTo" >
+    update a_user
+    <set >
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="testCode != null" >
+        test_code = #{testCode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null" >
+        job_title = #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        intro = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null" >
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileVer != null" >
+        mobile_ver = #{mobileVer,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneModel != null" >
+        phone_model = #{phoneModel,jdbcType=VARCHAR},
+      </if>
+      <if test="operatingSystem != null" >
+        operating_system = #{operatingSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="systemVer != null" >
+        system_ver = #{systemVer,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenId != null" >
+        wx_open_id = #{wxOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxNickName != null" >
+        wx_nick_name = #{wxNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="wxAvatarUrl != null" >
+        wx_avatar_url = #{wxAvatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="wxGender != null" >
+        wx_gender = #{wxGender,jdbcType=VARCHAR},
+      </if>
+      <if test="wxProvince != null" >
+        wx_province = #{wxProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="wxCity != null" >
+        wx_city = #{wxCity,jdbcType=VARCHAR},
+      </if>
+      <if test="wxCountry != null" >
+        wx_country = #{wxCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUnionId != null" >
+        wx_union_id = #{wxUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="isMember != null" >
+        is_member = #{isMember,jdbcType=INTEGER},
+      </if>
+      <if test="avatarPath != null" >
+        avatar_path = #{avatarPath,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundPath != null" >
+        background_path = #{backgroundPath,jdbcType=VARCHAR},
+      </if>
+      <if test="birthData != null" >
+        birth_data = #{birthData,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="expand != null" >
+        expand = #{expand,jdbcType=VARCHAR},
+      </if>
+      <if test="isDisable != null" >
+        is_disable = #{isDisable,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oauth.entity.UserTo" >
+    update a_user
+    set phone = #{phone,jdbcType=VARCHAR},
+      test_code = #{testCode,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      job_title = #{jobTitle,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      mobile_ver = #{mobileVer,jdbcType=VARCHAR},
+      phone_model = #{phoneModel,jdbcType=VARCHAR},
+      operating_system = #{operatingSystem,jdbcType=VARCHAR},
+      system_ver = #{systemVer,jdbcType=VARCHAR},
+      wx_open_id = #{wxOpenId,jdbcType=VARCHAR},
+      wx_nick_name = #{wxNickName,jdbcType=VARCHAR},
+      wx_avatar_url = #{wxAvatarUrl,jdbcType=VARCHAR},
+      wx_gender = #{wxGender,jdbcType=VARCHAR},
+      wx_province = #{wxProvince,jdbcType=VARCHAR},
+      wx_city = #{wxCity,jdbcType=VARCHAR},
+      wx_country = #{wxCountry,jdbcType=VARCHAR},
+      wx_union_id = #{wxUnionId,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      user_status = #{userStatus,jdbcType=INTEGER},
+      token = #{token,jdbcType=VARCHAR},
+      is_member = #{isMember,jdbcType=INTEGER},
+      avatar_path = #{avatarPath,jdbcType=VARCHAR},
+      background_path = #{backgroundPath,jdbcType=VARCHAR},
+      birth_data = #{birthData,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      expand = #{expand,jdbcType=VARCHAR},
+      is_disable = #{isDisable,jdbcType=INTEGER},
+      is_del = #{isDel,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
